@@ -20,7 +20,7 @@ function askQuestion() {
 }
 
 let noOfCorrectAnswers = 0
-function tallyQuiz() {
+function quizFeedback() {
   for (let i = 0; i < questions.length; i++) {
     if (i === 0) {
       console.log(`\nCandidate Name: ${candidateName}`)
@@ -35,7 +35,7 @@ function tallyQuiz() {
 
 let status = "";
 function gradeQuiz(candidateAnswers){
-  tallyQuiz();
+  quizFeedback();
   grade = (noOfCorrectAnswers)/(correctAnswers.length)*100
     status = "FAILED"
     if (grade >= 80) {
@@ -50,7 +50,7 @@ function runProgram() {
   askForName();
   console.log(`Hello, ${candidateName}!`);
   askQuestion(this.candidateAnswers);
-  gradeQuiz() 
+  gradeQuiz(this.candidateAnswers) 
 }
 
 // Don't write any code below this line //
