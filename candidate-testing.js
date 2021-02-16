@@ -22,26 +22,25 @@ function askQuestion() {
     console.log("")    
   }
 }
-
-let noOfCorrectAnswers = 5
-
-function gradeQuiz() {
-  let grade = (noOfCorrectAnswers)/(correctAnswers.length)*100;
-  for (let i = 0; i <= questions.length; i++) {
-    if (i = questions.length) {
-     console.log(`>>> Overall Grade: ${grade}`);
-        if (candidateAnswers[i].isNaN === false) {
-          if (candidateAnswers[i].toLowerCase() === correctAnswers[i].toLowerCase()) {
-            noOfCorrectAnswers += 1; {
-              if (candidateAnswers[i] === correctAnswers[i]) {
-                noOfCorrectAnswers += 1;
-              }
-            }
-          }
-        }
+let noOfCorrectAnswers = 0
+function tallyQuiz() {
+  let n = 0;
+  while (n < correctAnswers.length) {
+    if (candidateAnswers[n].toLowerCase() === correctAnswers[n].toLowerCase()) {
+      noOfCorrectAnswers += 1;}
+      n++;
       }
     }
-  }
+let status = "";
+function gradeQuiz(){
+  tallyQuiz();
+  grade = (noOfCorrectAnswers)/(correctAnswers.length)*100
+    status = "FAILED"
+    if (grade >= 80) {
+       status = "PASSED!";
+    }
+  return console.log(`>>> Overall Grade: ${grade}% (${noOfCorrectAnswers} of 5 responses correct) <<<\n>>> Status: ${status} <<<`)
+}
 
 
 
@@ -49,10 +48,7 @@ function runProgram() {
   askForName();
   console.log(`Hello, ${candidateName}!`);
   askQuestion();
-  gradeQuiz();
-  console.log(noOfCorrectAnswers);
-  console.log(questions.length);
-  console.log(candidateAnswers);
+  gradeQuiz() 
 }
 
 // Don't write any code below this line //
