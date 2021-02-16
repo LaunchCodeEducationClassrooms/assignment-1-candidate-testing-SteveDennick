@@ -13,7 +13,7 @@ function askForName() {
 }
 
 function askQuestion() {
-  for (let i = 0; i <= questions.length - 1; i++) {
+  for (let i = 0; i < questions.length; i++) {
     questionsInput = input.question(`${[i + 1]}) ${questions[i]}`);
     candidateAnswers.push(questionsInput);
     console.log(`Your Answer: ${candidateAnswers[i]}\nCorrect Answer: ${correctAnswers[i]}`)
@@ -23,7 +23,7 @@ function askQuestion() {
 
 let noOfCorrectAnswers = 0
 function tallyQuiz() {
-  for (let i = 0; i <= questions.length - 1; i++) {
+  for (let i = 0; i < questions.length; i++) {
     if (candidateAnswers[i].toLowerCase() === correctAnswers[i].toLowerCase()) {
       noOfCorrectAnswers += 1;
     }
