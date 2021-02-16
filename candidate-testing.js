@@ -23,8 +23,7 @@ function askQuestion() {
 
 let noOfCorrectAnswers = 0
 function tallyQuiz() {
-  let i = 0;
-  for (let i = 0; i < questions.length; i++) {
+  for (let i = 0; i <= questions.length - 1; i++) {
     if (candidateAnswers[i].toLowerCase() === correctAnswers[i].toLowerCase()) {
       noOfCorrectAnswers += 1;
     }
