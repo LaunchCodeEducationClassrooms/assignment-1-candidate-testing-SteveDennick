@@ -35,7 +35,7 @@ function tallyQuiz() {
 }
 
 let status = "";
-function gradeQuiz(){
+function gradeQuiz(candidateAnswers){
   tallyQuiz();
   grade = (noOfCorrectAnswers)/(correctAnswers.length)*100
     status = "FAILED"
@@ -50,7 +50,7 @@ function gradeQuiz(){
 function runProgram() {
   askForName();
   console.log(`Hello, ${candidateName}!`);
-  askQuestion();
+  askQuestion(this.candidateAnswers);
   gradeQuiz() 
 }
 
