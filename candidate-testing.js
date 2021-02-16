@@ -12,6 +12,8 @@ function askForName() {
  candidateName = input.question("Enter your name here: ");
 }
 
+//function below prompts the user with questions from the question array 1 at a time then enters user input into candidateAnswers array
+
 function askQuestion() {
   for (let i = 0; i < questions.length; i++) {
     questionsInput = input.question(`${[i + 1]}) ${questions[i]}`);
@@ -19,19 +21,23 @@ function askQuestion() {
   }
 }
 
+//function below prints formatted quiz feedback. Seperate from gradeQuiz function for readability
+
 let noOfCorrectAnswers = 0
 function quizFeedback() {
   for (let i = 0; i < questions.length; i++) {
     if (i === 0) {
       console.log(`\nCandidate Name: ${candidateName}`)
     }
-        console.log(`${[i + 1]}) ${questions[i]}\nYour Answer: ${candidateAnswers[i]}\nCorrect Answer: ${correctAnswers[i]}`)
-        console.log("");
-          if (candidateAnswers[i].toLowerCase() === correctAnswers[i].toLowerCase()) {
-            noOfCorrectAnswers += 1;
-          }
+      console.log(`${[i + 1]}) ${questions[i]}\nYour Answer: ${candidateAnswers[i]}\nCorrect Answer: ${correctAnswers[i]}`)
+      console.log("");
+      if (candidateAnswers[i].toLowerCase() === correctAnswers[i].toLowerCase()) {
+          noOfCorrectAnswers += 1;
+      }
   }
 }
+
+//function below prints formatted quiz feedback first using quizFeedback, then gives grade % and pass/fail status
 
 let status = "";
 function gradeQuiz(candidateAnswers){
