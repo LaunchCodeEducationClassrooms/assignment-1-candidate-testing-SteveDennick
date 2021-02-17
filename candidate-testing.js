@@ -10,6 +10,7 @@ let candidateAnswers = [];
 
 function askForName() {
  candidateName = input.question("Enter your name here: ");
+ return candidateName;
 }
 
 //function below prompts the user with questions from the question array 1 at a time then enters user input into candidateAnswers array
@@ -19,6 +20,7 @@ function askQuestion() {
     questionsInput = input.question(`${[i + 1]}) ${questions[i]}`);
     candidateAnswers.push(questionsInput);   
   }
+  return candidateAnswers;
 }
 
 //function below prints formatted quiz feedback. Seperate from gradeQuiz function for readability
