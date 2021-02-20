@@ -1,10 +1,6 @@
 const input = require('readline-sync');
 
-// TODO 2: modify your quiz app to ask 5 questions //
-
-// TODO 1.1a: Define candidateName // 
 let candidateName = "";
-// TODO 1.2a: Define question, correctAnswer, and candidateAnswer //
 let question = "Who was the first American woman in space? ";
 let correctAnswer = "Sally Ride";
 let candidateAnswer = "";
@@ -14,12 +10,10 @@ let candidateAnswers = [];
 
 
 function askForName() {
-  // TODO 1.1b: Ask for candidate's name //
 candidateName = input.question("What is your name?: ");
 }
 
 function askQuestion() {
-  // TODO 1.2b: Ask candidate the question and assign the response as candidateAnswer //
   for (i = 0; i < questions.length; i++) {
     if (i === questions.length) {
       return candidateAnswers;
@@ -30,31 +24,29 @@ function askQuestion() {
 function gradeQuiz(candidateAnswers) {
   let answerTotal = 0;
   let status = "FAILED"
-  // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
-  for (i = 0; i < questions.length; i++) {
-    if (candidateAnswers[i].toLowerCase() === correctAnswers[i].toLowerCase()) {
+    for (i = 0; i < questions.length; i++) {
+      if (candidateAnswers[i].toLowerCase() === correctAnswers[i].toLowerCase()) {
       answerTotal++;
-    }
-    if (i === 0) {
+      }
+      if (i === 0) {
       console.log(`\nCandidate Name: ${candidateName}`);
-    }
+      }
     console.log(`${[i + 1]}) ${questions[i]}\nYour Answer: ${candidateAnswers[i]}\nCorrect Answer: ${correctAnswers[i]}`)
     console.log("");
       }
-    if (answerTotal >= 4) {
+      if (answerTotal >= 4) {
       status = "PASSED";
-    }
-    if (i = questions.length) {
+      }
+      if (i = questions.length) {
       let grade = ((answerTotal)/(questions.length)*100);
-      console.log(`>>> Overall Grade: ${grade}% (${answerTotal} of ${correctAnswers.length} responses correct) <<<\n>>> Status: ${status} <<<`);
+          console.log(`>>> Overall Grade: ${grade}% (${answerTotal} of ${correctAnswers.length} responses correct) <<<\n>>> Status: ${status} <<<`);
       return grade;
-    }
-  }
+      }
+}
 
 
 function runProgram() {
   askForName();
-  // TODO 1.1c: Ask for candidate's name //
   console.log(`Hello, ${candidateName}!`)
   askQuestion();
   gradeQuiz(this.candidateAnswers);
