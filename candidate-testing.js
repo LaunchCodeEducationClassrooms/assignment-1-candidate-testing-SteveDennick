@@ -47,6 +47,7 @@ function gradeQuiz(candidateAnswers) {
     if (i = questions.length) {
       let grade = ((answerTotal)/(questions.length)*100);
       console.log(`>>> Overall Grade: ${grade}% (${answerTotal} of ${correctAnswers.length} responses correct) <<<\n>>> Status: ${status} <<<`);
+      return grade;
     }
   }
 
