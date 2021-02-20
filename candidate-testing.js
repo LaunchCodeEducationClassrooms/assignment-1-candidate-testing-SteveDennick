@@ -27,9 +27,9 @@ function askQuestion() {
       candidateAnswers.push(input.question(questions[i]));
   }
 }
-let answerTotal = 0;
-let status = "FAILED"
 function gradeQuiz(candidateAnswers) {
+  let answerTotal = 0;
+  let status = "FAILED"
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
   for (i = 0; i < questions.length; i++) {
     if (candidateAnswers[i].toLowerCase() === correctAnswers[i].toLowerCase()) {
