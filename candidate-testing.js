@@ -1,6 +1,10 @@
 const input = require('readline-sync');
 
+// TODO 2: modify your quiz app to ask 5 questions //
+
+// TODO 1.1a: Define candidateName // 
 let candidateName = "";
+// TODO 1.2a: Define question, correctAnswer, and candidateAnswer //
 let question = "Who was the first American woman in space? ";
 let correctAnswer = "Sally Ride";
 let candidateAnswer = "";
@@ -8,13 +12,14 @@ let questions = ["Who was the first American woman in space? ", "True or false: 
 let correctAnswers = ["Sally Ride", "true", "40", "Trajectory", "3"];
 let candidateAnswers = [];
 
+
 function askForName() {
- candidateName = input.question("Enter your name here: ");
+  // TODO 1.1b: Ask for candidate's name //
+candidateName = input.question("What is your name?: ");
 }
 
-//function below prompts the user with questions from the question array 1 at a time then enters user input into candidateAnswers array
-
 function askQuestion() {
+  // TODO 1.2b: Ask candidate the question and assign the response as candidateAnswer //
   for (i = 0; i < questions.length; i++) {
     if (i === questions.length) {
       return candidateAnswers;
@@ -22,42 +27,36 @@ function askQuestion() {
       candidateAnswers.push(input.question(questions[i]));
   }
 }
-//function below prints formatted quiz feedback. Seperate from gradeQuiz function for readability
-
-let noOfCorrectAnswers = 0
-function quizFeedback() {
-  for (let i = 0; i < questions.length; i++) {
+let answerTotal = 0;
+let status = "FAILED"
+function gradeQuiz(candidateAnswers) {
+  // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
+  for (i = 0; i < questions.length; i++) {
+    if (candidateAnswers[i].toLowerCase() === correctAnswers[i].toLowerCase()) {
+      answerTotal++;
+    }
     if (i === 0) {
-      console.log(`\nCandidate Name: ${candidateName}`)
+      console.log(`\nCandidate Name: ${candidateName}`);
     }
-      console.log(`${[i + 1]}) ${questions[i]}\nYour Answer: ${candidateAnswers[i]}\nCorrect Answer: ${correctAnswers[i]}`)
-      console.log("");
-      if (candidateAnswers[i].toLowerCase() === correctAnswers[i].toLowerCase()) {
-          noOfCorrectAnswers += 1;
+    console.log(`${[i + 1]}) ${questions[i]}\nYour Answer: ${candidateAnswers[i]}\nCorrect Answer: ${correctAnswers[i]}`)
+    console.log("");
       }
-  }
-}
-
-//function below prints formatted quiz feedback first using quizFeedback, then gives grade % and pass/fail status
-
-let status = "";
-function gradeQuiz(candidateAnswers){
-  quizFeedback();
-  grade = (noOfCorrectAnswers)/(correctAnswers.length)*100
-    status = "FAILED"
-    if (grade >= 80) {
-       status = "PASSED!";
+    if (answerTotal >= 4) {
+      status = "PASSED";
     }
-  return console.log(`>>> Overall Grade: ${grade}% (${noOfCorrectAnswers} of 5 responses correct) <<<\n>>> Status: ${status} <<<`)
-}
-
+    if (i = questions.length) {
+      let grade = ((answerTotal)/(questions.length)*100);
+      console.log(`>>> Overall Grade: ${grade}% (${answerTotal} of ${correctAnswers.length} responses correct) <<<\n>>> Status: ${status} <<<`);
+    }
+  }
 
 
 function runProgram() {
   askForName();
-  console.log(`Hello, ${candidateName}!`);
-  askQuestion(this.candidateAnswers);
-  gradeQuiz(this.candidateAnswers) 
+  // TODO 1.1c: Ask for candidate's name //
+  console.log(`Hello, ${candidateName}!`)
+  askQuestion();
+  gradeQuiz(this.candidateAnswers);
 }
 
 // Don't write any code below this line //
